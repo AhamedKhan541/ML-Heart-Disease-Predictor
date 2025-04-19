@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heart Disease Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>❤️ Heart Disease Predictor</h1>
+        <form action="/predict" method="post">
+            <div class="input-group">
+                <label>Age:</label>
+                <input type="number" name="age" step="any" required>
+                
+                <label>Sex (1=Male, 0=Female):</label>
+                <input type="number" name="sex" min="0" max="1" required>
+                
+                <label>Chest Pain Type (0-3):</label>
+                <input type="number" name="cp" min="0" max="3" required>
+                
+                <label>Resting Blood Pressure:</label>
+                <input type="number" name="trestbps" required>
+                
+                <label>Cholesterol:</label>
+                <input type="number" name="chol" required>
+                
+                <label>Fasting Blood Sugar > 120 mg/dl (1 = true; 0 = false):</label>
+                <input type="number" name="fbs" min="0" max="1" required>
+                
+                <label>Resting ECG (0-2):</label>
+                <input type="number" name="restecg" min="0" max="2" required>
+                
+                <label>Max Heart Rate Achieved:</label>
+                <input type="number" name="thalach" required>
+                
+                <label>Exercise Induced Angina (1 = yes; 0 = no):</label>
+                <input type="number" name="exang" min="0" max="1" required>
+                
+                <label>Oldpeak:</label>
+                <input type="number" step="any" name="oldpeak" required>
+                
+                <label>Slope (0-2):</label>
+                <input type="number" name="slope" min="0" max="2" required>
+                
+                <label>CA (number of major vessels, 0–3):</label>
+                <input type="number" name="ca" min="0" max="3" required>
+                
+                <label>Thal (0 = normal; 1 = fixed defect; 2 = reversible defect):</label>
+                <input type="number" name="thal" min="0" max="2" required>
+            </div>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if prediction_text %}
+            <div class="result">{{ prediction_text }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
